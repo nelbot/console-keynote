@@ -15,28 +15,37 @@ class Keynote
 end
 
 class Slide
-attr_accessor :width
-attr_accessor :height
+    
+    def initialize    
+      f = IO.readlines("keynote.txt")
+      puts f[0], f[1], f[2], f[3], f[4]
+      slide_text = []
+      slide_text.push(f[0])
+      puts slide_text[0].to_s
+    end
 
-  def initialize    
-    @width = width
-    @height = height
-    TermInfo.screen_size[0] = height
-    TermInfo.screen_size[1] = width
-  end
-
-  def show_me_the_money
-    puts @height
-    puts @width
-  end
+    def center
+     
+    end
 end
 
-# p TermInfo.screen_size
 
-# puts TermInfo.screen_size[0] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 slide = Slide.new
-slide.show_me_the_money
 
 
 
