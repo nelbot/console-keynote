@@ -3,55 +3,41 @@ require 'terminfo'
 class Keynote
   def initialize
     @all_slides = []
-  end
-
-  def add_slides(slides)
-    @all_slides.push(slides)
-  end
-
-  def presentation
-    puts @all_slides
-  end
+  end 
 end
 
 class Slide
-    
-    def initialize    
-      f = IO.readlines("keynote.txt")
-      puts f[0], f[1], f[2], f[3], f[4]
-      slide_text = []
-      slide_text.push(f[0])
-      puts slide_text[0].to_s
-    end
+@str = IO.readlines("keynote.txt")
 
     def center
-     
+      # @str.each do |line|
+      #   if @str != "----"
+      #     puts "#{@str} + #{@spaces_wide} + #{@spaces_tall}"
+      #   end
+    end
+
+    def width
+      @str = IO.readlines("keynote.txt")
+      @spaces_wide = (TermInfo.screen_size[1] - @str[0].length) / 2
+      puts "a" * spaces_wide + @str[0]
+    end
+
+    def height
+      @str = IO.readlines("keynote.txt")
+      @spaces_tall = (TermInfo.screen_size[0] - 1) / 2
+      puts "\n" * spaces_tall 
     end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 slide = Slide.new
 
+slide.height
+
+slide.width
 
 
-
-
-
+slide.center
 
 
 
