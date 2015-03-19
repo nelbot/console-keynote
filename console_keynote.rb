@@ -7,24 +7,34 @@ class Keynote
 end
 
 class Slide
-@str = IO.readlines("keynote.txt")
-
-    def center
-      # @str.each do |line|
-      #   if @str != "----"
-      #     puts "#{@str} + #{@spaces_wide} + #{@spaces_tall}"
-      #   end
+    def initialize
+      @str = IO.readlines("keynote.txt")
     end
 
-    def width
-      @str = IO.readlines("keynote.txt")
-      @spaces_wide = (TermInfo.screen_size[1] - @str[0].length) / 2
-      puts "a" * spaces_wide + @str[0]
+    def center
+      @str.each do |line|
+        line = line.chomp
+        if line != "----"
+          self.height
+          self.width(line)
+
+          # NEXT STEP AFTER NEXT METHOD CREATION: create "each" that I control with next and previous
+        end
+      end
+    end
+
+    def next
+      # Take in next element from Array
+
+    end
+
+    def width(slide)
+      spaces_wide = (TermInfo.screen_size[1] - slide.length) / 2
+      puts " " * spaces_wide + slide
     end
 
     def height
-      @str = IO.readlines("keynote.txt")
-      @spaces_tall = (TermInfo.screen_size[0] - 1) / 2
+      spaces_tall = (TermInfo.screen_size[0] - 1) / 2
       puts "\n" * spaces_tall 
     end
 end
@@ -32,13 +42,11 @@ end
 
 slide = Slide.new
 
-slide.height
-
-slide.width
-
-
 slide.center
 
+command = gets.chomp
+if command == "next"
+  puts String.next
 
 
 # Console Keynote #
